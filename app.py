@@ -1,8 +1,9 @@
 from starlette.applications import Starlette
 from starlette.staticfiles import StaticFiles
-from starlette.responses import HTMLResponse
+from starlette.responses import HTMLResponse, JSONResponse
 from starlette.templating import Jinja2Templates
 import uvicorn
+from fastai.vision.all import load_learner
 
 
 templates = Jinja2Templates(directory='templates')
@@ -10,12 +11,22 @@ templates = Jinja2Templates(directory='templates')
 app = Starlette(debug=True)
 app.mount('/static', StaticFiles(directory='statics'), name='static')
 
+model = load_learner('pokemon_classifier.pkl')
+
 
 @app.route('/')
 async def homepage(request):
     template = "index.html"
     context = {"request": request}
     return templates.TemplateResponse(template, context)
+
+
+@app.route('/classify', methods=['POST'])
+async def classify(request):
+    data = await request.form()
+    bytes = await (data["file"].read())
+    prediction, position, tensor = model.predict(bytes)
+    return JSONResponse({"prediction": prediction, "probability": tensor[position].item()})
 
 
 @app.route('/error')

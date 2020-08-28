@@ -1,0 +1,58 @@
+body {
+    background: no-repeat center url("../images/landscape.jpg");
+}
+.center {
+    text-align: center;
+}
+.top {
+    margin-top: 30px;
+}
+.background {
+    background: no-repeat center url("../images/pokeball.png");
+}
+.main {
+    margin-top: 20px;
+    min-height: 500px;
+    position: relative;
+    padding: 0;
+}
+input {
+    display: block;
+    margin: 15px auto;
+    width: 103px;
+}
+input:hover {
+    cursor: pointer;
+}
+.main form {
+    position: absolute;
+    top: 90px;
+    width: 100%;
+}
+#instructions {
+    position: absolute;
+    bottom: 90px;
+    text-align: center;
+    width: 100%;
+}
+#instructions p {
+    width: 200px;
+    margin: 0 auto;
+}
+.hide {
+    display: none;
+}
+#result {
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+footer {
+    text-align: center;
+}
+footer a  {
+    color: #212529;
+    font-weight: bold;
+}

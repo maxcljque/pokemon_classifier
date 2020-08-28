@@ -1,24 +1,12 @@
-# An example Starlette application
+# Pokemon Classifier
 
-Install and run:
+This is a silly little app for classifying Pokemon.
 
-```shell
-git clone https://github.com/encode/starlette-example.git
-cd starlette-example
-scripts/install
-scripts/run
-```
+The model was trained as an assignment in the [Fast AI](http://course.fast.ai/) course and saved 
+into the `pokemon_classifier.pkl` file.
 
-Open `http://127.0.0.1:8000/` in your browser:
+The [dataset](https://www.kaggle.com/lantian773030/pokemonclassification/data) used for training was compiled by [lantian773030](https://www.kaggle.com/lantian773030) on Kaggle.
 
-![Homepage](https://raw.githubusercontent.com/encode/starlette-example/master/docs/index.png)
+The model has an error rate of about 0.07.  It has trouble recognizing the differences between similar looking Pokemon
+like Alakazam/Kadabra, Krabby/Kingler, etc...
 
-Navigate to path that is not routed, eg `http://127.0.0.1:8000/nope`:
-
-![Homepage](https://raw.githubusercontent.com/encode/starlette-example/master/docs/404.png)
-
-Raise a server error by navigating to `http://127.0.0.1:8000/error`:
-
-![Homepage](https://raw.githubusercontent.com/encode/starlette-example/master/docs/500.png)
-
-Switch the `app = Starlette(debug=True)` line to `app = Starlette()` to see a regular 500 page instead.
