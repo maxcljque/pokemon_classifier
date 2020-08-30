@@ -1,6 +1,8 @@
+from envparse import env
+
 from starlette.applications import Starlette
 from starlette.staticfiles import StaticFiles
-from starlette.responses import HTMLResponse, JSONResponse
+from starlette.responses import JSONResponse
 from starlette.templating import Jinja2Templates
 import uvicorn
 from fastai.vision.all import load_learner
@@ -58,4 +60,5 @@ async def server_error(request, exc):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+    port = env.int("PORT", default=80)
+    uvicorn.run(app, host='0.0.0.0', port=port)
